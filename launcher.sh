@@ -4,5 +4,5 @@
 
 cd /
 cd home/pi/gifcam
-sudo python gifcam.py
+sudo python3 pixe.py
 cd /
