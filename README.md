@@ -1,5 +1,5 @@
 ## Features
-- Creates a GIF at the press of a button and saves it locally
+- Creates a GIF at the press of a button and saves it locally, plus uploads to Google Drive
 - Optionally tweet the created GIF
 - The GIF can be made to run START => END or "rebound" START <=> END
 - Status LEDs keep the user informed as to what's going on
@@ -38,14 +38,14 @@ Here I'm assuming we're starting with a clean install of Raspbian Jessie Lite. I
 ### Install Dependencies
   - Run -- `sudo apt-get update`
   - Run -- `sudo apt-get upgrade`
-  - Install PiCamera -- `sudo apt-get install python-picamera`
   - Make sure camera interface is enabled with `sudo raspi-config` > Interfacing Options > Camera
   - Install GraphicsMagick -- `sudo apt-get install graphicsmagick`
   - Install Gitcore -- `sudo apt-get install git-core`
   - Install GifCam -- `git clone https://github.com/michaelruppe/gifcam.git`
-  - Install pip: `sudo apt-get install python-pip`
-  - Install twython: `sudo pip install twython` -- https://github.com/ryanmcgrath/twython
+  - Install twython: `sudo pip3 install twython` -- https://github.com/ryanmcgrath/twython
+  - Install PyDrive: `sudo pip3 install PyDrive`
   - Create a twitter app at https://apps.twitter.com/ and populate `gifcam.py` with the necessary credentials. If you don't want to tweet your GIFs, don't create the app, and disable the functionality by setting `tweet = False` in `gifcam.py`.
+  - Setup a Google Developer project and config PyDrive (see https://googledrive.github.io/PyDrive/docs/build/html/quickstart.html)
   - Optional; Install mount USB if you want to use the `gifcamusb.py` script instead (no twitter, good for Pis without wifi. http://www.raspberrypi-spy.co.uk/2014/05/how-to-mount-a-usb-flash-disk-on-the-raspberry-pi/
   - To access your GIFs over WiFi, configure the gif directory as a samba shared directory
 
@@ -54,6 +54,7 @@ Here I'm assuming we're starting with a clean install of Raspbian Jessie Lite. I
   - Run -- `crontab -e`
     - You may be prompted to select a text editor if you haven't edited the crontab before. You'll be prompted for a selection between 1 and 3. I choose nano, which is 2 - this is also the default choice, indicated by the `[2]` .
   - add this line to end of that file - `@reboot sh /home/pi/gifcam/launcher.sh`
+  - Run the code (`python3 pixe.py`) first before rebooting. You'll need to go to a web address to authenticate with Google first. Subsequent boots should have this authentication stored locally and run properly on bootup
   
   
 ### Permissions:
