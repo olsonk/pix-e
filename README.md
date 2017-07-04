@@ -103,3 +103,6 @@ Here I'm assuming we're starting with a clean install of Raspbian Jessie Lite. I
 - working directory referencing, this is so you can cleanup source images with: `rm $workingDir/\*.jpg` rather than from within the repo main directory
 - samba shared folder to pull images off over wifi (Pi Zero W)
 - smart twitter handling for when gifs are taken and you're not on wifi? If an image upload fails it gets pushed onto a re-attempt stack, which attempts to pop each time a gif is taken / an upload button pressed!
+
+## Credit:
+- All credit goes to Nick Brewer, original creator of the PIX-E GIF Camera. See YouTube video here: https://www.youtube.com/watch?v=IIMVxUdSL78
